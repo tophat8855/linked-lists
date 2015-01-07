@@ -30,7 +30,7 @@ class DoublyLinkedList
   end
 
   def to_s(node=@head)
-    return node.value if node.next_node.nil?
+    return "#{node.value}" if node.next_node.nil?
     return "#{node.value} <=> #{to_s(node.next_node)}"
   end
 
