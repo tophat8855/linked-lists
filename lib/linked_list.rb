@@ -29,7 +29,7 @@ class LinkedList
   end
 
   def to_s(node=@head)
-    return node.value if node.next_node.nil?
+    return "#{node.value}" if node.next_node.nil?
     return "#{node.value} > #{to_s(node.next_node)}"
   end
 
@@ -101,6 +101,26 @@ class LinkedList
     end
     node.value
   end
+
+  def sort
+    if @head == @tail
+      return @head
+    end
+
+    (self.length - 1).times do
+      node = @head
+      while !node.next_node.nil?
+        if node.value > node.next_node.value
+          value_holder = node.value
+          insert_after(node.next_node.value, value_holder)
+          node = node.next_node
+          delete(value_holder)
+        else
+          node = node.next_node
+        end
+      end
+    end
+  end
 end
 
 list = LinkedList.new("I")
@@ -120,3 +140,9 @@ list.reverse
 p list.to_s
 kth = list.kth_to_last(1)
 p kth.to_s
+
+numbers = LinkedList.new(3)
+numbers.append(7)
+numbers.append(2)
+numbers.append(5)
+numbers.append(0)
