@@ -94,8 +94,12 @@ class LinkedList
     @tail.next_node = nil
   end
 
-  def kth_to_last(value)
-    
+  def kth_to_last(k)
+    node = @tail
+    k.times do
+      node = find_previous_node(node.value)
+    end
+    node.value
   end
 end
 
@@ -114,8 +118,5 @@ list.delete("Hi")
 p list.to_s
 list.reverse
 p list.to_s
-
-list = LinkedList.new("Alone")
-p list.to_s
-list.reverse
-p list.to_s
+kth = list.kth_to_last(1)
+p kth.to_s
