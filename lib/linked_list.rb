@@ -93,6 +93,10 @@ class LinkedList
     @tail = current_node
     @tail.next_node = nil
   end
+
+  def kth_to_last(value)
+    
+  end
 end
 
 list = LinkedList.new("I")
